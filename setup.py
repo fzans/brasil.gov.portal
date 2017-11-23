@@ -68,6 +68,7 @@ setup(
         'collective.z3cform.widgets',  # TODO: remove on release 2.0
         'five.grok',
         'five.pt',
+        'future',
         'lxml',
         'plone.api > 1.1.0',
         # Passo a referenciar visões novas adicionadas nesse marco:

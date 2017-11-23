@@ -4,6 +4,8 @@ Changelog
 1.6rc1 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
+- Adiciona suporte ao Python 3 e dependência ao future.
+  [caduvieira]
 - Corrige proteção CSRF na adição de sites;
   atualiza views e templates de Plone para facilitar manutenção.
   [hvelarde]

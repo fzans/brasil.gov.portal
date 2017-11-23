@@ -11,10 +11,16 @@ https://github.com/plonegovbr/portalpadrao.release/issues/10
 Esse módulo pode ser removido quando brasil.gov.portal for 2.x. Favor informar
 no CHANGES.rst essa informação quando remover esse módulo.
 """
+try:
+    # Python2
+    import new
+except ImportError:
+    # Python3
+    from types import ModuleType as new
+
 from brasil.gov.portal.logger import logger
 from zope.interface import Interface
 
-import new
 import sys
 
 
@@ -34,7 +40,12 @@ def alias_module(name, target):
         try:
             __import__(module_name)
         except ImportError:
-            new_module = new.module(module_name)
+            try:
+                # Python 3
+                new_module = new(module_name)
+            except TypeError:
+                # Python2
+                new_module = new.module(module_name)
             sys.modules[module_name] = new_module
             if module is not None:
                 setattr(module, parts[i - 1], new_module)

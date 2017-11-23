@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from brasil.gov.portal import _
 from brasil.gov.portal.config import REDES
+from past.builtins import apply
 from plone.app.controlpanel.form import ControlPanelForm
 from Products.CMFCore.utils import getToolByName
 from Products.CMFDefault.formlib.schema import SchemaAdapterBase

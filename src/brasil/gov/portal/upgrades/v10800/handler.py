@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from future.builtins import str  # isort:skip
 from brasil.gov.portal.logger import logger
 from plone import api
 from plone.app.upgrade.utils import loadMigrationProfile
@@ -25,7 +26,7 @@ def atualiza_layouts_capa(context):
                 children.append(child)
             layout['children'] = children
             layouts.append(layout)
-        cover_layouts[name.strip()] = unicode(json.dumps(layouts))
+        cover_layouts[name.strip()] = str(json.dumps(layouts))
 
     api.portal.set_registry_record(
         name='collective.cover.controlpanel.ICoverSettings.layouts',

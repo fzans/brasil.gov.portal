@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import division  # isort:skip
 from future.builtins import range  # isort:skip
 from plone.contentrules import PloneMessageFactory as _
 from Products.CMFPlone.utils import getToolByName
@@ -42,7 +41,8 @@ class Pagination(object):
     def _calc_total_items(self, total_items):
         self.total_items = total_items
         fullpage = 1 if self.total_items % self.items_by_page != 0 else 0
-        self.total_pages = (self.total_items / self.items_by_page) + fullpage
+        # Round down for Py2 and Py3
+        self.total_pages = (self.total_items // self.items_by_page) + fullpage
 
     def _set_album_attributes(self):
         catalog = getToolByName(self.context, 'portal_catalog')
